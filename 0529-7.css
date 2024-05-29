@@ -34,3 +34,8 @@ footer {height: 100px; background-color: gray;}
 #popup button{
     padding: 3px 6px;position: absolute; bottom: 20px; right: 20px;
 }
+/*작은기계장치*/
+ @media(max-width:550px) {
+ #popup { width: 100%; left: 0;}
+}
+    
