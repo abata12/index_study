@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onclick 핸들러방식</title>
+    <link rel="stylesheet" href="0529-5.css">
+</head>
+<body>
+    <div id="layout">
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="#" class="mainMenu">메뉴1</a>
+                        <nav class="subMenu">
+                            <a href="#">서브메뉴1-1</a>
+                            <a href= "#" onclick = "red()">서브메뉴1-2</a>
+                        </nav>
+                    </li>
+                    <li>
+                        <a href="#" class="mainMenu">메뉴2</a>
+                        <nav class="subMenu">
+                            <a href="#">서브메뉴2-1</a>
+                            <a href="#">서브메뉴2-2</a>
+                            <a href="https://naver.com" target="_blank">서브메뉴2-3</a>
+                            <a href="#" id="blue">서브메뉴2-4</a>
+                            <a href="#">서브메뉴2-5</a>
+                        </nav>
+                    </li>
+                    <li>
+                        <a href="#" class="mainMenu">메뉴3</a>
+                         <nav class="subMenu">
+                            <a href="#">서브메뉴3-1</a>
+                            <a href="#">서브메뉴3-2</a>
+                            <a href="#">서브메뉴3-3</a>
+                            <a href="#">서브메뉴3-4</a>
+                        </nav>
+                    </li>
+                    <li>
+                        <a href="#" class="mainMenu">메뉴4</a>
+                        <nav class="subMenu">
+                                <a href="#" id="sm41" onclick="tr()">서브메뉴4-1</a>
+                                <a href="#">서브메뉴4-2</a>
+                                <a href="#">서브메뉴4-3</a>
+                        </nav>
+                    </li>
+                    <li>
+                        <a href="#" class="mainMenu">메뉴5</a>
+                        <nav class="subMenu">
+                             <a href="#">서브메뉴5-1</a>
+                             <a href="#">서브메뉴5-2</a>
+                             <a href="#">서브메뉴5-3</a>
+                        </nav>
+                    </li>
+                </ul>
+            </nav>
+        </header>    
+        <main>
+                <img src="images/summer.jpg" alt="여름">
+        </main>
+        <footer ></footer>
+        <section id="popup">
+            <h3>공지사항</h3>
+            <button type="button" >닫기</button>
+        </section>
+    </div>    
+    
+
+
+    <script src="0529-5온클릭리스너방식7교시.js"> </script>
+</body>
+    
+</html>
