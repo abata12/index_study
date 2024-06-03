@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트로 태그요소 추가</title>
+    <style>
+        *{margin: 0; padding: 0%;/*box-sizing: border-box;*/ }
+        /*A {box-sizing: border-box; width:300px, padding:10px, border-box}*/
+        #layout {
+            max-width: 1000px; margin: auto; border: 5px solid red;
+            overflow: auto;
+        }
+        header {
+            background-color: beige; display: flex; align-items: flex-end;
+            padding: 10px;
+        }
+        h1{
+            padding: 30px; border:1px solid red;
+            margin: 0 10px;
+        }
+        nav {
+            display: flex; background-color: skyblue;
+            flex: 1;
+            justify-content: space-evenly; align-items: center;
+            padding: 15px; margin: 0 70px 0 20px;
+        }
+        nav > a {
+            border: 1px solid green; width: 70px; text-align: center;
+        }
+        /* A {display:flex1;}하면 자식 아이템들이 왼쪽-> 오른쪽 방향을 향해 진열된다. 그런데 자식 아이템 중이 
+        높이가 가장높은 아이템 높이 만큼 모든 아이템들이 높이가 높아진다. 아니면, 부모가 높이가 높았다면, 자식 
+        높아지는 현상이 있다. 이현상을 없애려면 flex에선 사용되는 높이가 높아지는 현상이 있다.
+        아이템들은 똑같이 높이가 이현상을 없애려면
+        flex align-items:center
+        A {flex1;}이 A는 자식요소로서 {display.flex:}라는 설정의 영향을 받고 있는 아이템이다. 비율의
+        형제요소들에 {flex : 1;} 설정이 없다면, 부모요소의 남는 여백을 다 차지한다.{flex : 1;}는 속성이름이다
+        {display : flex;} 에서 flex는 값이다*/
+        main {
+            background-color: gold; display: flex; padding: 20px;
+        }
+        section {
+            padding: 200px 50px; background-color: burlywood;
+            flex: 2; text-align: center;  margin-right: 20px;
+        }
+        section ul {
+            text-align: left; border: 2px; solid: gray;
+            list-style-position: inside;
+
+        }
+        #right {
+         flex: 1.5; 
+        }
+        article {
+            background-color: blueviolet; padding: 80px;
+        }
+        aside {
+            background-color: chartreuse; padding: 80px; margin-top: 20px;
+            }
+        footer {
+            background-color: #add; padding: 10px; padding-left: 150px;
+        }
+        address {
+            background-color: darkseagreen; padding: 10px; max-width: 600px;
+        }
+        p {
+            background-color: darkseagreen; padding: 10px; max-width: 600px;
+        }
+        audio {max-width: 100%;}
+        video {max-width: 100%; height: 400px; border:1px ;}
+        
+        /*(0~530픽셀 넓이에서 디자인 적용됨)*/
+        @media (max-width :530px){
+            header {flex-direction: column; align-items: flex-start;}
+            nav {margin: 10px; width: 97%;}
+            main {flex-direction: column;}
+            section {margin-right: 0; margin-bottom: 20px;}
+            footer { padding-left: 10px;}
+            }
+       
+    </style>
+</head>
+<body>
+    <div id="layout">
+        <header>
+            <h1>반응형 웹</h1>
+            <nav>
+                <a href="#">메뉴1</a>
+                <a href="#">메뉴2</a>
+                <a href="#">메뉴3</a>
+                <a href="#">메뉴4</a>
+                <a href="#">메뉴5</a>
+            </nav>
+        </header>
+    </div>
+        <main>
+            <section>
+                <h2>콘텐츠 그룹01</h2>
+                <audio controls>
+                    <source src="media/horse.mp3" type="audio/mpeg">
+                </audio>
+                <video controls>
+                    <source src="media/movie.mp4" type="video/mp4">
+                </video>
+            
+                <!--자바스크립트로 태그요소 추가하기 지정요소의 내부에 없던 <span>요소가-->
+            </section>
+            <section>
+                <h2>콘텐츠 그룹02</h2> 
+                <audio controls>
+                    <source src="media/radiant.mp3" type="audio/mpeg">
+                </audio>
+            <video controls>
+                <source src="media/sea.mp4" type="video/mp4">
+            </video>
+            </section>
+            <div id="right">
+                <article>
+                    <h2>주요 기사</h2>     
+                </article>
+                <aside> 
+                     <h2>광고</h2> 
+                </aside>
+            </div>
+        </main>
+    
+        <footer>
+            <address>
+                경기도 부천시 오정구 삼정동 032)674-5685 icoxpub@naver.com
+            </address>
+            <p>COPRIGHTⓒ All right reserved</p>
+        </footer>
+
+    </div>
+    <script>
+        const $h2 = document.querySelector("main section:first-child h2");
+        //alert($h2);
+        $h2.innerHTML += "<br><b style='font-size:1.2rem; color: red;'>태그가 추가됨</b>";
+        //요소 innerHTML 속성은 이미지/글자/태그 모두 값으로 넣을 수 있다.
+        const $p = document.createElement("p");
+        //alert($p);
+        $h2.after($p);//다음 요소 즉 형제요소가 생긴다.before()는 앞에 추가, after()
+        $p.innerHTML = "형제 요소가 추가됨";
+        const $h22 = document.querySelector("main section:last-of-type h2");
+        //alert($h22)
+        //$h22.before($p);
+        const $div = document.createElement("div");
+        $h22.before($div);
+        $div.innerHTML = "형제요소가 추가됨";
+        const $pp = document.querySelector("section p");
+        //alert($pp);
+        const $ul = document.createElement("ul");
+         //alert($ul);
+         $ul.innerHTML = "<li>딸기</li><li>바나나</li><li>파인애플</li>";
+         $pp.after($ul);
+
+    </script>
+</body>
+</html>
