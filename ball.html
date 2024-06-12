@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공이 좌우상하로 무한반복 이동</title>
+    <style>
+        * { margin: 0;  padding: 0; box-sizing: border-box;}
+        #layout {
+            max-width: 700px; margin: auto; border: 5px solid pink;
+            position: relative; height: 70vh;
+        }
+        #b1, #b2 {
+            width: 100px; height: 100px; border-radius: 50%;  
+            background:radial-gradient( pink, red);  
+            position: absolute;  
+         }
+        #b1 { top: 100px; left: 0;}
+        #b2 { top: 0; left:calc(( 100% - 100px ) / 2);}
+    </style>
+</head>
+<body>
+    <div id="layout">
+        <h1>공이 좌우 그리고 상하로 무한반복한다.</h1>
+        <div id="b1"></div>
+        <div id="b2"></div>
+    </div>
+    <script>
+        const $layout = document.querySelector('#layout');  //공들이 들어있는 핑크색 컨테이너
+        const $b1 = document.querySelector('#b1');  //왼쪽이동 공 객체
+        const $b2 = document.querySelector('#b2'); //아래이동 공 객체
+
+      
+        let i = 0; //왼쪽 공위치 (x좌표)
+        let j = 0; //왼쪽 공위치 (x좌표)
+
+        let s1 = 10; //속도 (숫자 증가시 속도가 빨라짐)
+        let s2 = 10; //속도 (숫자 증가시 속도가 빨라짐)
+
+        let ww = $layout.offsetWidth; //핑크색컨테이너 넓이(#layout)
+        //alert(ww);
+        let wh = $layout.offsetHeight; //핑크색컨테이너 넓이(#layout)
+        //alert(wh);
+
+        let bw = $b1.clientWidth; //왼쪽이동 공의 넓이(패딩+보더)
+        //넓이 스크립트 : 브라우저 넓이 = window.innerwidth, window.outerwidth , 
+        //오브젝트 넓이 = A.clientwidth,(패딩,넓이)
+        let bh = $b2.clientHeight; //왼쪽이동 공의 넓이(패딩+보더)
+        setInterval( () => move()  , 10 );  //0.01초마다마다 move함수를 호출한다.
+
+        move = () => {
+             //오른쪽 방향으로 이동
+        i += s1;  //i = i + sp;..... i = 0 + 10 (=대입한다) 0에서 10을 더한 후 i는 10이 된다. 10은 i이다.
+              //반대방향으로 리턴
+        if( i + bw >= ww || i <= 0 ) s1 *= -1; //sp = sp*(-1); sp = 10*(-1); sp =-10; //if(오른쪽끝이거나 왼쪽끝이라면) 반대방향이 되라
+        $b1.style.left = `${i}px`; //백틱문자...객체.자바에서 left는 속성이 아니고 스타일키워드이다.변수와 문자열은 분리해서 적음
+       
+        j += s2;
+        //if(아래쪽 끝이거나 위쪽 끝이라면 반대반향으로 리턴)
+        if( j + bh >= wh || j <= 0) s2*= -1;
+        $b2.style.top = `${j}px`;
+        }
+    </script>
+</body>
+</html>
